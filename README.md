@@ -85,6 +85,7 @@ We also wait for the worlds to finish saving when quitting the game to ensure no
 - demorogabrtz (Portuguese)
 - ReallySuperOtter (Swedish)
 - asabhi6776 (Hindi)
+- lumiscosity (Polish)
 ####
 
 ### Compatibility
