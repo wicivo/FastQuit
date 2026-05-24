@@ -36,6 +36,7 @@ public abstract class LevelStorageSourceMixin {
         }
     }
 
+    // method_43418 - lambda in loadSummaries
     @Inject(
             method = "lambda$loadLevelSummaries$0",
             at = @At(

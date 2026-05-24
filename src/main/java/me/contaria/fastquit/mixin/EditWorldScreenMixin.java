@@ -17,10 +17,12 @@ public abstract class EditWorldScreenMixin {
     @Final
     private LevelStorageSource.LevelStorageAccess levelAccess;
 
+    // method_54595 - Optimize World
+    // method_54596 - Make Backup
     @Inject(
             method = {
-                    "conditionallyMakeBackupAndShowToast",
-                    "makeBackupAndShowToast"
+                    "lambda$new$12",
+                    "lambda$new$7"
             },
             at = @At("HEAD"),
             require = 2,
