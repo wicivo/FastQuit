@@ -65,7 +65,7 @@ public abstract class MinecraftMixin {
     }
 
     @Inject(
-            method = "crash(Lnet/minecraft/client/Minecraft;Ljava/io/File;Lnet/minecraft/CrashReport;)V",
+            method = "crash(Lnet/minecraft/client/Minecraft;Ljava/io/File;Lnet/minecraft/CrashReport;I)V",
             at = @At("HEAD")
     )
     private static void fastquit$waitForSaveOnCrash(CallbackInfo ci) {
