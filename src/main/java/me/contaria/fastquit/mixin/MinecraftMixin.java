@@ -53,7 +53,7 @@ public abstract class MinecraftMixin {
     }
 
     @Inject(
-            method = "close",
+            method = "exitWorldAndClose",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/Minecraft;disconnectWithProgressScreen()V",
