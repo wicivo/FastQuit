@@ -65,7 +65,7 @@ public abstract class WorldListWidgetWorldEntryMixin extends WorldSelectionList.
             )
     )
     private void fastquit$openWorldListWhenFailed(CallbackInfo ci) {
-        this.minecraft.setScreen(this.screen);
+        this.minecraft.gui.setScreen(this.screen);
     }
 
     @Inject(

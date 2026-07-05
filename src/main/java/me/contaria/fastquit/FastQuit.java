@@ -1,6 +1,7 @@
 package me.contaria.fastquit;
 
 import me.contaria.fastquit.mixin.MinecraftAccessor;
+import me.contaria.fastquit.mixin.GuiAccessor;
 import me.contaria.fastquit.mixin.MinecraftServerAccessor;
 import me.contaria.fastquit.mixin.LevelStorageSessionAccessor;
 import com.mojang.logging.LogUtils;
@@ -130,7 +131,7 @@ public final class FastQuit implements ClientModInitializer {
             return;
         }
 
-        Screen oldScreen = client.screen;
+        Screen oldScreen = client.gui.screen();
 
         Component stillSaving = TextHelper.translatable("fastquit.screen.waiting", String.join("\" & \"", servers.stream().map(server -> server.getWorldData().getLevelName()).toList()));
         log(stillSaving.getString());
@@ -138,7 +139,7 @@ public final class FastQuit implements ClientModInitializer {
         servers.forEach(server -> server.getRunningThread().setPriority(Thread.NORM_PRIORITY));
 
         try {
-            client.setScreen(new WaitingScreen(stillSaving, cancellable));
+            client.gui.setScreen(new WaitingScreen(stillSaving, cancellable));
 
             while (servers.stream().anyMatch(server -> !server.isShutdown())) {
                 if (cancellable != null && cancellable.isCancelled()) {
@@ -153,9 +154,9 @@ public final class FastQuit implements ClientModInitializer {
         } finally {
             // compatibility with "WorldGen" mod
             if (oldScreen != null && oldScreen.getClass().getName().equals("caeruleusTait.WorldGen.gui.screens.WGConfigScreen")) {
-                client.screen = oldScreen;
+                ((GuiAccessor) client.gui).fastquit$setScreen(oldScreen);
             } else {
-                client.setScreenAndShow(oldScreen);
+                client.gui.setScreen(oldScreen);
             }
         }
     }

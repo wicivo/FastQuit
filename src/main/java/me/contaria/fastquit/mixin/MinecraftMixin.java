@@ -48,7 +48,7 @@ public abstract class MinecraftMixin {
         if (FastQuit.CONFIG.renderSavingScreen && this.isLocalServer) {
             original.call(client, screen);
         } else {
-            client.setScreen(screen);
+            client.gui.setScreen(screen);
         }
     }
 

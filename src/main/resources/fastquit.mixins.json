@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "EditWorldScreenMixin",
+    "GuiAccessor",
     "LevelSettingsAccessor",
     "LevelStorageAccessMixin",
     "LevelStorageSessionAccessor",
